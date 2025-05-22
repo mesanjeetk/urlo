@@ -12,8 +12,13 @@ function App() {
   const [copied, setCopied] = useState(false);
   const qrWrapperRef = useRef(null);
 
+  // Add loading state
+  const [loading, setLoading] = useState(false);
+
+  // Updated handleSubmit function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("/api/url", {
         method: "POST",
@@ -32,8 +37,11 @@ function App() {
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
@@ -97,11 +105,23 @@ function App() {
               />
               <button
                 type="submit"
-                className="bg-[#8be9fd] text-black px-6 py-3 rounded-lg hover:bg-[#6ddde3] transition-all transform hover:scale-105 flex items-center justify-center gap-2 group"
+                disabled={loading}
+                className={`bg-[#8be9fd] text-black px-6 py-3 rounded-lg transition-all transform flex items-center justify-center gap-2 group ${loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#6ddde3] hover:scale-105"
+                  }`}
               >
-                Shorten URL
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                {loading ? (
+                  <>
+                    <span className="animate-spin h-5 w-5 border-2 border-t-transparent border-black rounded-full" />
+                    <span>Shortening...</span>
+                  </>
+                ) : (
+                  <>
+                    Shorten URL
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
+
             </div>
           </form>
 
