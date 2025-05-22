@@ -208,7 +208,7 @@ function App() {
                 >
                   {feature.icon}
                   <h3 className="text-xl font-semibold mt-4 mb-2">{feature.title}</h3>
-                  <p className="text-[#b0b0b0]">{feature.description}</p>
+                  <p className="text-[#262626]">{feature.description}</p>
                 </div>
               ))}
             </div>
