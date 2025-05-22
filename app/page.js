@@ -5,35 +5,6 @@ import { ArrowRight, Copy, Check, Zap, BarChart3, Globe2 } from "lucide-react";
 import Logo from "@/components/Logo";
 import QRCode from "react-qr-code";
 import { motion } from "framer-motion";
-export const metadata = {
-  title: "URLO",
-  description:
-    "URLO is the fastest way to shorten, track, and share URLs. Boost your digital reach with lightning speed.",
-  openGraph: {
-    title: "URLO",
-    description:
-      "URLO is the fastest way to shorten, track, and share URLs. Boost your digital reach with lightning speed.",
-    url: "https://urlo.vercel.app",
-    siteName: "URLO",
-    images: [
-      {
-        url: "https://urlo.vercel.app/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "URLO - URL Shortener",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "URLO",
-    description:
-      "URLO is the fastest way to shorten, track, and share URLs. Boost your digital reach with lightning speed.",
-    images: ["https://urlo.vercel.app/og-image.png"],
-  },
-};
 
 function App() {
   const [url, setUrl] = useState("");
